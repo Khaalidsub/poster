@@ -1,8 +1,5 @@
-import { CreateUserInput } from './create-user.input';
-import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
+import { InputType, Field, Int, PartialType, OmitType } from '@nestjs/graphql';
+import { User } from '../entities/user.entity';
 
 @InputType()
-export class UpdateUserInput extends PartialType(CreateUserInput) {
-  @Field(() => Int)
-  id: number;
-}
+export class UpdateUserInput extends PartialType(OmitType(User, ['id'])) {}

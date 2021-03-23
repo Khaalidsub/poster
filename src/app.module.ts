@@ -1,6 +1,4 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { GraphQLModule } from '@nestjs/graphql';
 import { join } from 'path';
@@ -12,10 +10,12 @@ import { MongooseModule } from '@nestjs/mongoose';
       include: [UsersModule],
       sortSchema: true,
     }),
-    MongooseModule.forRoot('mongodb://localhost/poster'),
+    MongooseModule.forRoot('mongodb://localhost/poster', {
+      useFindAndModify: false,
+    }),
     UsersModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}

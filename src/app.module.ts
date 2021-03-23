@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { GraphQLModule } from '@nestjs/graphql';
 import { join } from 'path';
+import { MongooseModule } from '@nestjs/mongoose';
 @Module({
   imports: [
     GraphQLModule.forRoot({
@@ -11,6 +12,7 @@ import { join } from 'path';
       include: [UsersModule],
       sortSchema: true,
     }),
+    MongooseModule.forRoot('mongodb://localhost/poster'),
     UsersModule,
   ],
   controllers: [AppController],

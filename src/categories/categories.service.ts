@@ -19,6 +19,10 @@ export class CategoriesService {
     return this.categoryModel.find({});
   }
 
+  findByIds(ids: string[]) {
+    return this.categoryModel.find({ _id: { $in: [...ids] } });
+  }
+
   findById(id: string) {
     return this.categoryModel.findById(id);
   }

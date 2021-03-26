@@ -27,4 +27,7 @@ export class PostsService {
   remove(id: string) {
     return this.postModel.findByIdAndDelete(id);
   }
+  getUser(id: string) {
+    return this.postModel.findById(id).populate('user').exec();
+  }
 }

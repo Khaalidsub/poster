@@ -5,6 +5,8 @@ import { Post } from '../entities/post.entity';
 export class CreatePostInput extends PartialType(
   OmitType(Post, ['id', 'categories', 'user'], InputType),
 ) {
+  @Field(() => [String])
   categories: string[];
+  @Field(() => String)
   user: string;
 }

@@ -6,9 +6,9 @@ import { Category } from '../../categories/entities/category.entity';
 import { User, UserSchema } from '../../users/entities/user.entity';
 import * as mongoose from 'mongoose';
 export type PostDocument = Post & Document;
+@InputType('PostInputType')
 @ObjectType()
 @Schema()
-@InputType('PostInputType')
 export class Post implements IPost {
   @Field(() => ID)
   id: string;

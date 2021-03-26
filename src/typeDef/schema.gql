@@ -2,6 +2,27 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Category {
+  id: ID!
+  name: String!
+}
+
+input CategoryInputType {
+  id: ID!
+  name: String!
+}
+
+input CreateCategoryInput {
+  name: String!
+}
+
+input CreatePostInput {
+  body: String
+  categories: [String!]!
+  title: String
+  user: String!
+}
+
 input CreateUserInput {
   email: String!
   name: String!
@@ -9,14 +30,49 @@ input CreateUserInput {
 }
 
 type Mutation {
+  createCategory(createCategoryInput: CreateCategoryInput!): Category!
+  createPost(createPostInput: CreatePostInput!): Post!
   createUser(createUserInput: CreateUserInput!): User!
+  removeCategory(id: String!): Category!
+  removePost(id: String!): Post!
   removeUser(id: String!): User!
+  updateCategory(id: String!, updateCategoryInput: UpdateCategoryInput!): Category!
+  updatePost(id: String!, updatePostInput: UpdatePostInput!): Post!
   updateUser(id: String!, updateUserInput: UpdateUserInput!): User!
 }
 
+type Post {
+  body: String!
+  categories: [Category!]!
+  id: ID!
+  title: String!
+  user: User!
+}
+
+input PostInputType {
+  body: String!
+  categories: [CategoryInputType!]!
+  id: ID!
+  title: String!
+  user: UserInputType!
+}
+
 type Query {
+  categories: [Category!]!
+  category(id: String!): Category!
+  post(id: String!): Post!
+  posts: [Post!]!
   user(id: String!): User!
   users: [User!]!
+}
+
+input UpdateCategoryInput {
+  name: String
+}
+
+input UpdatePostInput {
+  body: String
+  title: String
 }
 
 input UpdateUserInput {
